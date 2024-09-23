@@ -1,0 +1,68 @@
+/* Container for the entire Devices page */
+.devices-container {
+    display: flex;
+    flex-direction: column;
+    height: calc(100vh - 5em); /* Full viewport height */
+    padding: 20px;
+}
+
+/* Search input styling */
+.search-input {
+    margin-bottom: 20px;
+    padding: 10px;
+    width: 100%;
+    max-width: 400px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+/* Scrollable grid layout for device cards */
+.device-card-grid {
+    flex: 1; /* Take up the remaining space after the header and search bar */
+    overflow-y: auto; /* Enable scrolling within this element */
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Exactly two columns */
+    gap: 20px; /* Space between cards */
+    padding-right: 10px; /* Optional: adds space to prevent scrollbar overlap */
+}
+
+/* Styling for each device card */
+.device-card {
+    position: relative; /* Ensure the delete button is positioned relative to the card */
+    background-color: lightgray;
+    border: 1px solid #000000;
+    border-radius: 8px;
+    padding: 16px;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.device-card:hover {
+    transform: translateY(4px); /* Moves the card down */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Adjust shadow on hover */
+    background-color: darkgray;
+}
+
+/* Styling for the delete button inside the device card */
+.delete-button {
+    position: absolute; /* Position button absolutely */
+    top: 10px;
+    right: 10px;
+    background-color: red;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.delete-button:hover {
+    background-color: darkred; /* Darker shade on hover */
+}

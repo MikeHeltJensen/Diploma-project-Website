@@ -1,0 +1,17 @@
+body {
+  margin: 0;
+  padding: 0;
+  height: 100vh; /* Full height of the viewport */
+  max-height: 100vh; /* Ensures it doesn't exceed the viewport height */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: flex;
+  flex-direction: column;
+}
+div#root{
+  max-height: fit-content;
+}
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
