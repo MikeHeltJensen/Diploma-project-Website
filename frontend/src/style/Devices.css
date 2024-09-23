@@ -1,0 +1,33 @@
+.devices-container {
+    padding: 20px;
+}
+
+.search-input {
+    margin-bottom: 20px;
+    padding: 10px;
+    width: 100%;
+    max-width: 400px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.device-card-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Exactly two columns */
+    gap: 20px; /* Space between cards */
+}
+
+.device-card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 16px;
+    margin: 8px;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.device-card:hover {
+    transform: translateY(4px); /* Moves the card down */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Adjust shadow on hover */
+}
