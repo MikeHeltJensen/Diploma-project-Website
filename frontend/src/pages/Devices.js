@@ -1,63 +1,40 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom'; // Import useNavigate
-import DeviceCard from '../components/DeviceCard';
+import DeviceList from '../components/DeviceList'; // Import the DeviceList component
 import '../style/Devices.css';
 
 const Devices = () => {
     const [devices, setDevices] = useState([]);
     const [searchQuery, setSearchQuery] = useState('');
-    const [filteredDevices, setFilteredDevices] = useState([]);
-    const navigate = useNavigate(); // Initialize useNavigate
+    const [pagination, setPagination] = useState({ page: 1, limit: 10 }); // Set initial pagination state
 
+    // Fetch devices with pagination
     useEffect(() => {
         const fetchDevices = async () => {
             try {
-                const response = await axios.get('http://localhost:8080/systemdata/data');
+                const response = await axios.get(`http://localhost:8080/systemdata/data?page=${pagination.page}&limit=${pagination.limit}`);
                 setDevices(response.data);
-                setFilteredDevices(response.data);
             } catch (error) {
                 console.error('Error fetching the devices data:', error);
             }
         };
 
         fetchDevices();
-    }, []);
+    }, [pagination.page, pagination.limit]);
 
-    useEffect(() => {
-        const results = devices.filter(device =>
-            device.deviceName.toLowerCase().includes(searchQuery.toLowerCase())
-        );
-        setFilteredDevices(results);
-    }, [searchQuery, devices]);
-
+    // Handle search query changes
     const handleSearchChange = (event) => {
         setSearchQuery(event.target.value);
     };
 
-    const handleCardClick = (deviceId) => {
-        navigate(`/devices/${deviceId}`); // Navigate to the device details page
-    };
-
     return (
         <div className="devices-container">
-            <h2>Devices</h2>
-            <input
-                type="text"
-                placeholder="Search by device name"
-                value={searchQuery}
-                onChange={handleSearchChange}
-                className="search-input"
+            <DeviceList
+                devices={devices}
+                searchQuery={searchQuery}
+                pagination={pagination}
+                setPagination={setPagination}
             />
-            <div className="device-card-grid">
-                {filteredDevices.map((device) => (
-                    <DeviceCard
-                        key={device.id}
-                        device={device}
-                        onClick={() => handleCardClick(device.id)} // Handle click event
-                    />
-                ))}
-            </div>
         </div>
     );
 };

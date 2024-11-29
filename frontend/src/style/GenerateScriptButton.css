@@ -1,0 +1,16 @@
+.generate-script-btn {
+    padding: 20px 30px;
+    /*background-color: #4caf50;*/
+    background-color: rgb(167, 167, 167);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 20px;
+  }
+  
+  .generate-script-btn:hover {
+    /*background-color: #45a049;*/
+    background-color: rgb(85, 85, 85);
+  }
+  
